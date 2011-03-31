@@ -1,0 +1,98 @@
+% LaTeX Cover letter
+% ------------------------
+% Author: Stephen Paul Ierodiaconou, 2011
+
+\documentclass[10pt]{article}
+% Depends on:
+\usepackage{ifthen}
+\usepackage{geometry}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{enumitem}
+\usepackage{setspace}
+
+% Optionally remove page numbers:
+\thispagestyle{empty}\pagestyle{empty}
+
+% Configure margins:
+\geometry{top=2.5cm,bottom=2.5cm,left=3.0cm,right=3.0cm}
+% Set spacing:
+% No indent and increased paragraph spacing
+\setlength{\parindent}{0pt}
+\addtolength{\parskip}{0.7\baselineskip}
+
+% Commands
+% - \lettertitle{Name}{ColorForName}{LiteralsOrRightText}{SpaceBelow} - Creates the CV title
+\newcommand{\lettertitle}[4] {%
+	\noindent{\LARGE\color{#2}\textsc{#1}}\hspace{\stretch{3}}{\large \textbf{#3}}\\[#4]}
+
+% - \positionedbox{Side}{Width}{TextContent} - Creates a box aligned left of given width
+\newcommand{\positionedbox}[3]{%
+	\begin{minipage}{#2}
+		\begin{flush#1}
+			#3
+		\end{flush#1}
+	\end{minipage}}
+
+% - \information{pieceofinfo}{pic/rightpic/space/none}{character} - Displays a piece of information pre/post-fixed with a 'character' symbol (pic), or leading space (space) or nothing (none).
+% characters: phone = \Telefon, letter = \Letter, email = \MVAt, URL = \Flatsteel, twitter = $\mathcal{T}$
+% NOTE: at the moment if you specify 'none' for the type, you still should put a non breaking space for 'character'
+\newcommand{\information}[3]{
+		\ifthenelse{\equal{#2}{pic}}
+			{#3~ }
+			{\ifthenelse{\equal{#2}{space}}
+				{~ ~ }
+				{}
+			}
+		#1\ifthenelse{\equal{#2}{rightpic}}
+			{~ #3}
+			{}
+		}
+
+% \cvheaderseperator{a}{b}{c}: Creates a horizontal rule separator where 'a' is the thickness, 'b' is the spacing above and 'c' is the spacing below.
+\newcommand{\letterheaderseperator}[3]{\\[#2]\rule{\linewidth}{#1}\\[#3]}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 					Content					  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\lettertitle{Joe Jimmy Johnson}{BrickRed}{AbC, MSc}{1.0cm}
+\positionedbox{left}{0.3\textwidth}{%
+	\information{10, Street Name}{pic}{\Letter}\\
+	\information{Area}{space}{~ }\\
+	\information{PostCode}{space}{~ }\\
+	\information{City}{space}{~ }\\
+	\information{Country}{space}{~ }\\
+}
+\positionedbox{right}{0.7\textwidth}{
+	\information{+12 123 4567, +12 123 4567}{rightpic}{\Telefon}\\%
+	\information{me@mail.com}{rightpic}{\MVAt}\\% 
+	\information{~ }{space}{~ }\\
+	\information{http://mypage.com}{rightpic}{\Flatsteel}\\%
+	\information{http://github.com/}{rightpic}{\Flatsteel}\\%
+	}
+\letterheaderseperator{0.3mm}{0.5cm}{0.1cm}
+
+% Date to the right, you can pull this up with a \vspace{-1.1cm} if you want
+\begin{flushright}\today\end{flushright}
+
+Dear PersonAtCompany,
+
+% some extra space
+\vspace{0.5cm}
+
+% 1.2 line spacing here on
+\begin{spacing}{1.2}
+I am awesome. I have loads of experience. You cant do without me, seriously!
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus odio turpis, interdum sed luctus sit amet, accumsan a ante. Aenean ac augue in sem tincidunt malesuada. Aliquam dictum volutpat leo, et pellentesque metus tincidunt nec. Proin dolor diam, pellentesque ac molestie consectetur, tempus id neque. Mauris semper semper nisl, nec pulvinar dolor vehicula quis. Cras sagittis varius tempor. Aliquam nec massa vel elit rutrum vulputate vitae eu tellus. Praesent congue tortor at velit sagittis ut laoreet ipsum accumsan. Integer hendrerit hendrerit nulla non pretium. Curabitur in purus arcu.
+
+Maecenas sed consectetur velit. Proin pulvinar augue vel tortor sodales placerat. Aliquam nec massa ut leo viverra cursus at eget neque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sit amet ligula vitae mauris elementum ultrices ut non enim. Sed egestas nisl quis nisl pulvinar pellentesque tempor diam convallis. Curabitur nec turpis lectus, nec dapibus dolor. Suspendisse ante lorem, mollis ac suscipit eget, eleifend eu diam. Nulla facilisi. In tempus feugiat pulvinar. Sed iaculis diam ut ante venenatis sollicitudin. Nam feugiat odio ac odio tincidunt eget condimentum nisl dapibus. Phasellus pharetra aliquet posuere. Etiam fermentum porttitor vestibulum. Vestibulum lacus arcu, dictum laoreet semper sit amet, vulputate nec enim. Mauris tempus consectetur tortor sit amet bibendum. Maecenas cursus luctus felis at facilisis.
+
+% Sign off
+\vspace{0.5cm}Yours sincerely,\\[0.2cm]
+My Name
+
+\end{spacing}
+\end{document}
