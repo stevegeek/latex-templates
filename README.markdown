@@ -1,6 +1,12 @@
 LaTeX templates by Stephen Ierodiaconou
 ---------------------------------------
 
+There are currently the following templates:
+
+* CV : a curriculum vitae or resume, includes commands to create appropriate sections. See the TeX file for documentation
+* Letter : a letter with head in similar format to the CV. Useful for cover letters.
+
+NOTE: Read the docs in each file as there are some still unresolved issues that require special attention. If you find these useful please push back you changes and improvements!
 
 
 ---------------------------------------
